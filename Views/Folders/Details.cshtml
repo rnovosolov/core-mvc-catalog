@@ -1,0 +1,29 @@
+﻿@model CoreMVCcatalog.Models.Folder
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dt>
+        @if ( Model.Subfolders != null)
+        {
+            @foreach (var subfolder in Model.Subfolders)
+            {
+                <dd class="col-sm-10">
+                    <a asp-action="Details" asp-route-name="@subfolder?.Name">@Html.DisplayFor(model => subfolder.Name)</a> <!--add links-->
+                </dd>
+             }
+        }
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Create" asp-route-parentId="@Model.Id">New Subfolder</a> |
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
