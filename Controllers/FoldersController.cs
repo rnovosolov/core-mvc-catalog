@@ -69,10 +69,8 @@ namespace CoreMVCcatalog.Controllers
         public async Task<IActionResult> Create([Bind("Id,Name, parent")] Folder folder)
         {
 
-            //var parentFolder = _context.Folders.Find(folder.parent.Id);
             if (ModelState.IsValid)
             {
-                //folder.parent = parentFolder;
                 _folderService.AddFolder(folder);
                 return RedirectToAction(nameof(Index));
             }
